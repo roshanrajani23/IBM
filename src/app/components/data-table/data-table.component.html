@@ -1,0 +1,45 @@
+<div class="mat-elevation-z8">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+    <!-- Display Image -->
+    <ng-container matColumnDef="displayImage">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Display Image</th>
+      <td mat-cell *matCellDef="let userImage">
+        <img height="20" width="20" [src]="userImage.avatar_url" alt=""/>
+      </td>
+    </ng-container>
+
+    <!-- First Name Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let row">{{row.username}}</td>
+    </ng-container>
+
+    <!-- Last Name Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+    <!-- Number of Stars -->
+    <ng-container matColumnDef="stars">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Stars</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+    <!-- Number of Repos -->
+    <ng-container matColumnDef="repos">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Repos</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[10,20,30]">
+  </mat-paginator>
+</div>
